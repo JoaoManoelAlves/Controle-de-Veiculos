@@ -10,10 +10,11 @@ export default class extends BaseSchema {
       table.date('data').notNullable()
       table.float('custo').notNullable()
       table
-        .integer('vehicle_id')
+        .integer('veiculo_id')
         .unsigned()
         .references('id')
-        .inTable('vehicles')
+        .inTable('veiculos')
+        .onUpdate('CASCADE')
         .onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')
