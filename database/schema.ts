@@ -8,18 +8,7 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AuthAccessTokenSchema extends BaseModel {
-  static $columns = [
-    'abilities',
-    'createdAt',
-    'expiresAt',
-    'hash',
-    'id',
-    'lastUsedAt',
-    'name',
-    'tokenableId',
-    'type',
-    'updatedAt',
-  ] as const
+  static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
   $columns = AuthAccessTokenSchema.$columns
   @column()
   declare abilities: string
@@ -44,15 +33,7 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class ManuntencaoSchema extends BaseModel {
-  static $columns = [
-    'createdAt',
-    'custo',
-    'data',
-    'descricao',
-    'id',
-    'updatedAt',
-    'vehicleId',
-  ] as const
+  static $columns = ['createdAt', 'custo', 'data', 'descricao', 'id', 'updatedAt', 'vehicleId'] as const
   $columns = ManuntencaoSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -88,16 +69,7 @@ export class UserSchema extends BaseModel {
 }
 
 export class VeiculoSchema extends BaseModel {
-  static $columns = [
-    'ano',
-    'createdAt',
-    'id',
-    'marca',
-    'modelo',
-    'placa',
-    'updatedAt',
-    'userId',
-  ] as const
+  static $columns = ['ano', 'createdAt', 'id', 'marca', 'modelo', 'placa', 'updatedAt', 'userId'] as const
   $columns = VeiculoSchema.$columns
   @column()
   declare ano: number

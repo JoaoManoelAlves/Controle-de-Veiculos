@@ -10,7 +10,7 @@ export default class extends BaseSchema {
       table.string('modelo').notNullable()
       table.string('marca').notNullable()
       table.integer('ano').notNullable()
-      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('usuario_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })
