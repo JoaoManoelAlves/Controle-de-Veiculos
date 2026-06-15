@@ -18,6 +18,8 @@ export default class User extends compose(UserSchema, withAuthFinder(hash)) {
     return `${first.slice(0, 2)}`.toUpperCase()
   }
 
-  @hasMany(() => Veiculos)
+  @hasMany(() => Veiculos, {
+    foreignKey: 'usuarioId',
+  })
   declare veiculos: HasMany<typeof Veiculos>
 }

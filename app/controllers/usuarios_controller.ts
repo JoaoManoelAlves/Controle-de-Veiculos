@@ -8,11 +8,11 @@ export default class UsuariosController {
     return usuarios
   }
   async store({ request }: HttpContext) {
-    const { nome, email, senha } = await request.validateUsing(createUserValidator)
+    const { nome, email, password } = await request.validateUsing(createUserValidator)
     const usuario = await User.create({
       nome,
       email,
-      senha,
+      password,
     })
     return usuario
   }
@@ -28,9 +28,9 @@ export default class UsuariosController {
 
   async update({ params, request, response }: HttpContext) {
     try {
-      const { nome, senha } = await request.validateUsing(updateUserValidator)
+      const { nome, password } = await request.validateUsing(updateUserValidator)
       const usuario = await User.findByOrFail('id', params.id)
-      usuario.merge({ nome, senha })
+      usuario.merge({ nome, password })
       await usuario.save()
       return usuario
     } catch (error) {

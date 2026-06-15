@@ -8,7 +8,18 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
 export class AuthAccessTokenSchema extends BaseModel {
-  static $columns = ['abilities', 'createdAt', 'expiresAt', 'hash', 'id', 'lastUsedAt', 'name', 'tokenableId', 'type', 'updatedAt'] as const
+  static $columns = [
+    'abilities',
+    'createdAt',
+    'expiresAt',
+    'hash',
+    'id',
+    'lastUsedAt',
+    'name',
+    'tokenableId',
+    'type',
+    'updatedAt',
+  ] as const
   $columns = AuthAccessTokenSchema.$columns
   @column()
   declare abilities: string
@@ -33,7 +44,15 @@ export class AuthAccessTokenSchema extends BaseModel {
 }
 
 export class ManuntencaoSchema extends BaseModel {
-  static $columns = ['createdAt', 'custo', 'data', 'descricao', 'id', 'updatedAt', 'veiculoId'] as const
+  static $columns = [
+    'createdAt',
+    'custo',
+    'data',
+    'descricao',
+    'id',
+    'updatedAt',
+    'veiculoId',
+  ] as const
   $columns = ManuntencaoSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
@@ -52,7 +71,7 @@ export class ManuntencaoSchema extends BaseModel {
 }
 
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'id', 'nome', 'senha', 'updatedAt'] as const
+  static $columns = ['createdAt', 'email', 'id', 'nome', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -62,14 +81,23 @@ export class UserSchema extends BaseModel {
   declare id: number
   @column()
   declare nome: string | null
-  @column()
-  declare senha: string
+  @column({ serializeAs: null })
+  declare password: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 }
 
 export class VeiculoSchema extends BaseModel {
-  static $columns = ['ano', 'createdAt', 'id', 'marca', 'modelo', 'placa', 'updatedAt', 'usuarioId'] as const
+  static $columns = [
+    'ano',
+    'createdAt',
+    'id',
+    'marca',
+    'modelo',
+    'placa',
+    'updatedAt',
+    'usuarioId',
+  ] as const
   $columns = VeiculoSchema.$columns
   @column()
   declare ano: number
@@ -85,6 +113,6 @@ export class VeiculoSchema extends BaseModel {
   declare placa: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-  @column()
+  @column({ columnName: 'usuario_id' })
   declare usuarioId: number | null
 }

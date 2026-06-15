@@ -43,4 +43,112 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/usuarios_controller').default['destroy']>>>
     }
   }
+  'access_tokens.store': {
+    methods: ["POST"]
+    pattern: '/login'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/user').loginValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/user').loginValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'access_tokens.destroy': {
+    methods: ["DELETE"]
+    pattern: '/logout'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/access_tokens_controller').default['destroy']>>>
+    }
+  }
+  'veiculos.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/veiculos'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['index']>>>
+    }
+  }
+  'veiculos.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/veiculos/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['create']>>>
+    }
+  }
+  'veiculos.store': {
+    methods: ["POST"]
+    pattern: '/veiculos'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/veiculo').createVeiculoValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/veiculo').createVeiculoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'veiculos.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/veiculos/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['show']>>>
+    }
+  }
+  'veiculos.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/veiculos/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['edit']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['edit']>>>
+    }
+  }
+  'veiculos.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/veiculos/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/veiculo').updateVeiculoValidator)>>
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/veiculo').updateVeiculoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'veiculos.destroy': {
+    methods: ["DELETE"]
+    pattern: '/veiculos/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['destroy']>>>
+    }
+  }
 }
