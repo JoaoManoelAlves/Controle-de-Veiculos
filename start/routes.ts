@@ -21,5 +21,11 @@ router.delete('/logout', [controllers.AccessTokens, 'destroy'])
 router
   .group(() => {
     router.resource('/veiculos', controllers.Veiculos)
+
+    router.get('/manutencoes', [controllers.Manutencaos, 'index'])
+    router.post('/veiculos/:veiculoId/manutencoes', [controllers.Manutencaos, 'store'])
+    router.get('/veiculos/:veiculoId/manutencoes/:id', [controllers.Manutencaos, 'show'])
+    router.put('/veiculos/:veiculoId/manutencoes/:id', [controllers.Manutencaos, 'update'])
+    router.delete('/veiculos/:veiculoId/manutencoes/:id', [controllers.Manutencaos, 'destroy'])
   })
   .use(middleware.auth())

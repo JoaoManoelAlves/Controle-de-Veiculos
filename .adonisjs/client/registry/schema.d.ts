@@ -151,4 +151,64 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/veiculos_controller').default['destroy']>>>
     }
   }
+  'manutencaos.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/manutencoes'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['index']>>>
+    }
+  }
+  'manutencaos.store': {
+    methods: ["POST"]
+    pattern: '/veiculos/:veiculoId/manutencoes'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/manutencao').createManutencaoValidator)>>
+      paramsTuple: [ParamValue]
+      params: { veiculoId: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/manutencao').createManutencaoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'manutencaos.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/veiculos/:veiculoId/manutencoes/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { veiculoId: ParamValue; id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['show']>>>
+    }
+  }
+  'manutencaos.update': {
+    methods: ["PUT"]
+    pattern: '/veiculos/:veiculoId/manutencoes/:id'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/manutencao').updateManutencaoValidator)>>
+      paramsTuple: [ParamValue, ParamValue]
+      params: { veiculoId: ParamValue; id: ParamValue }
+      query: ExtractQuery<InferInput<(typeof import('#validators/manutencao').updateManutencaoValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'manutencaos.destroy': {
+    methods: ["DELETE"]
+    pattern: '/veiculos/:veiculoId/manutencoes/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { veiculoId: ParamValue; id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/manutencaos_controller').default['destroy']>>>
+    }
+  }
 }

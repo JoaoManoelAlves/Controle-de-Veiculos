@@ -66,7 +66,7 @@ export class ManuntencaoSchema extends BaseModel {
   declare id: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-  @column()
+  @column({ columnName: 'veiculo_id' })
   declare veiculoId: number | null
 }
 

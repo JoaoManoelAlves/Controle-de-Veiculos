@@ -6,6 +6,7 @@ import { type AccessToken, DbAccessTokensProvider } from '@adonisjs/auth/access_
 import { hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Veiculos from './veiculo.ts'
+
 export default class User extends compose(UserSchema, withAuthFinder(hash)) {
   static accessTokens = DbAccessTokensProvider.forModel(User)
   declare currentAccessToken?: AccessToken

@@ -78,6 +78,36 @@ const routes = {
     tokens: [{"old":"/veiculos/:id","type":0,"val":"veiculos","end":""},{"old":"/veiculos/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['veiculos.destroy']['types'],
   },
+  'manutencaos.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/manutencoes',
+    tokens: [{"old":"/manutencoes","type":0,"val":"manutencoes","end":""}],
+    types: placeholder as Registry['manutencaos.index']['types'],
+  },
+  'manutencaos.store': {
+    methods: ["POST"],
+    pattern: '/veiculos/:veiculoId/manutencoes',
+    tokens: [{"old":"/veiculos/:veiculoId/manutencoes","type":0,"val":"veiculos","end":""},{"old":"/veiculos/:veiculoId/manutencoes","type":1,"val":"veiculoId","end":""},{"old":"/veiculos/:veiculoId/manutencoes","type":0,"val":"manutencoes","end":""}],
+    types: placeholder as Registry['manutencaos.store']['types'],
+  },
+  'manutencaos.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/veiculos/:veiculoId/manutencoes/:id',
+    tokens: [{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"veiculos","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"veiculoId","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"manutencoes","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['manutencaos.show']['types'],
+  },
+  'manutencaos.update': {
+    methods: ["PUT"],
+    pattern: '/veiculos/:veiculoId/manutencoes/:id',
+    tokens: [{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"veiculos","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"veiculoId","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"manutencoes","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['manutencaos.update']['types'],
+  },
+  'manutencaos.destroy': {
+    methods: ["DELETE"],
+    pattern: '/veiculos/:veiculoId/manutencoes/:id',
+    tokens: [{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"veiculos","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"veiculoId","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":0,"val":"manutencoes","end":""},{"old":"/veiculos/:veiculoId/manutencoes/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['manutencaos.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
