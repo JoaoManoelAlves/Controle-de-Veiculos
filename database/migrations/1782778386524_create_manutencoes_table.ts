@@ -2,9 +2,10 @@ import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
   protected tableName = 'manuntencaos'
+  protected newTableName = 'manutencoes'
 
   async up() {
-    this.schema.createTable(this.tableName, (table) => {
+    this.schema.createTable(this.newTableName, (table) => {
       table.increments('id').notNullable()
       table.text('descricao').notNullable()
       table.date('data').notNullable()

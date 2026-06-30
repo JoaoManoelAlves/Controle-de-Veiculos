@@ -43,7 +43,7 @@ export class AuthAccessTokenSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
-export class ManuntencaoSchema extends BaseModel {
+export class ManutencoeSchema extends BaseModel {
   static $columns = [
     'createdAt',
     'custo',
@@ -53,7 +53,7 @@ export class ManuntencaoSchema extends BaseModel {
     'updatedAt',
     'veiculoId',
   ] as const
-  $columns = ManuntencaoSchema.$columns
+  $columns = ManutencoeSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column()
@@ -66,7 +66,7 @@ export class ManuntencaoSchema extends BaseModel {
   declare id: number
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-  @column({ columnName: 'veiculo_id' })
+  @column()
   declare veiculoId: number | null
 }
 
@@ -113,6 +113,6 @@ export class VeiculoSchema extends BaseModel {
   declare placa: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-  @column({ columnName: 'usuario_id' })
+  @column()
   declare usuarioId: number | null
 }
