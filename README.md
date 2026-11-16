@@ -28,6 +28,59 @@ Ao excluir um usuário ou um veículo, os registros dependentes são removidos e
 - TypeScript
 - Docker e Docker Compose (opcional)
 
+## Como executar
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/JoaoManoelAlves/Controle-de-Veiculos.git
+cd Controle-de-Veiculos
+```
+
+### 2. Obter a imagem do Docker Hub
+
+A imagem publicada está em `joaomanoelalves/controle-veiculos:1.0`. Para baixá-la manualmente:
+
+```bash
+docker pull joaomanoelalves/controle-veiculos:1.0
+```
+
+### 3. Executar com Docker Compose (recomendado)
+
+Não é preciso instalar Node.js nem PostgreSQL. O `docker-compose.yml` baixa a imagem do Docker Hub e sobe o banco junto com a aplicação.
+
+```bash
+cp .env.example .env
+```
+
+No `.env`, preencha `APP_KEY`, `DB_USER`, `DB_PASSWORD` e `DB_DATABASE`. A `APP_KEY` pode ser gerada com `npm install` seguido de `node ace generate:key`. Depois, suba os serviços:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+A API ficará disponível em `http://localhost:3333`. Para acompanhar os logs, use `docker compose logs -f app`.
+
+### 4. Executar localmente, sem Docker
+
+**Pré-requisitos:** Node.js 24, npm e PostgreSQL 16 ou superior.
+
+```bash
+npm install
+cp .env.example .env
+node ace generate:key
+```
+
+Copie a chave gerada para `APP_KEY` no `.env` e ajuste as variáveis de banco. Crie o banco com o nome definido em `DB_DATABASE` e rode as migrations:
+
+```bash
+node ace migration:run
+npm run dev
+```
+
+A API ficará disponível em `http://localhost:3333`.
+
 ## Pré-requisitos
 
 - Node.js 24 (a imagem Docker usa `node:24-alpine`)
